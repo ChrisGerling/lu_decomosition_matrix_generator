@@ -14,6 +14,7 @@ public class Generator{
 
     }
 
+
     private static float[][] generateLower(int size) {
         Random r = new SecureRandom();
         float[][] toReturn = new float[size][size];
