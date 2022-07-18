@@ -2,15 +2,14 @@ import java.io.*;
 import java.security.SecureRandom;
 import java.util.Random;
 
-public class Generator {
-
+public class Generator{
 
     public static void main(String[] args) throws IOException {
-        int[] sizeArr = new int[]{2,10,15,20,25,50,100,200,300,400,500,600,700,900,1000};
+        int[] sizeArr = new int[]{10000, 20000};
         for (int size : sizeArr) {
             float[][] upper = generateUpper(size);
             float[][] lower = generateLower(size);
-            createFiles(upper, lower, matrixMul(upper, lower));
+            createFile(matrixMul(upper, lower),"luCompable");
         }
 
     }
@@ -67,10 +66,12 @@ public class Generator {
 
         for (float[] floats : matrix) {
             StringBuilder stringBuffer = new StringBuilder();
-            for (int j = 0; j < matrix.length; j++) {
+            for (int j = 0; j < matrix.length-1; j++) {
                 String toAppend = String.format("%.3f ", floats[j]);
                 stringBuffer.append(toAppend);
             }
+            String toAppend = String.format("%.3f", floats[matrix.length-1]);
+            stringBuffer.append(toAppend);
             bw.write(stringBuffer.toString());
             bw.newLine();
         }
