@@ -5,7 +5,7 @@ import java.util.Random;
 public class Generator{
 
     public static void main(String[] args) throws IOException {
-        int[] sizeArr = new int[]{10000, 20000};
+        int[] sizeArr = new int[]{10000,15000,20000};
         for (int size : sizeArr) {
             float[][] upper = generateUpper(size);
             float[][] lower = generateLower(size);
@@ -68,10 +68,10 @@ public class Generator{
         for (float[] floats : matrix) {
             StringBuilder stringBuffer = new StringBuilder();
             for (int j = 0; j < matrix.length-1; j++) {
-                String toAppend = String.format("%.3f ", floats[j]);
+                String toAppend = String.format("%.5f ", floats[j]);
                 stringBuffer.append(toAppend);
             }
-            String toAppend = String.format("%.3f", floats[matrix.length-1]);
+            String toAppend = String.format("%.5f", floats[matrix.length-1]);
             stringBuffer.append(toAppend);
             bw.write(stringBuffer.toString());
             bw.newLine();
